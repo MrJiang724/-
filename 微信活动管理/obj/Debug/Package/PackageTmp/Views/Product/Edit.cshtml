@@ -1,0 +1,93 @@
+﻿@model 微信活动管理.Models.tbl_product
+
+@{
+    ViewBag.Title = "邮政金融超市 - 修改产品";
+}
+
+@if(!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+            <p  class="navigation">@Html.ActionLink("产品管理", "Index", "Product") - 修改产品</p>
+   
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<fieldset>
+    <legend>修改产品</legend>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+ 
+
+        @Html.HiddenFor(model => model.product_id)
+        @Html.HiddenFor(model => model.create_time)
+        @Html.HiddenFor(model => model.expire_time)
+        @Html.HiddenFor(model => model.short_url)
+        @Html.HiddenFor(model => model.ticket_url)
+        @Html.HiddenFor(model => model.product_status)
+
+        <div class="editor-label">
+            @Html.Label("活动名称:")
+            <input class="text-box single-line" style="width:400px" id="product_name" name="product_name" type="text" value="@Html.DisplayFor(model => model.product_name)"/>
+            @Html.ValidationMessageFor(model => model.product_name)
+        </div>
+            
+
+         <div class="editor-label">
+            @Html.Label("活动分类:")
+            @Html.DropDownListFor(model => model.product_type, (IEnumerable<SelectListItem>)ViewBag.types)
+            @Html.ValidationMessageFor(model => model.product_type)
+
+            &nbsp;&nbsp;&nbsp;
+
+            @Html.Label("推送等级:")
+            @Html.DropDownListFor(model => model.push_level, (IEnumerable<SelectListItem>)ViewBag.push_levels)
+            @Html.ValidationMessageFor(model => model.push_level)
+         </div>
+
+         <div class="editor-label">
+            @Html.Label("活动描述:")
+         </div>
+         <div class="editor-label">
+            @Html.TextAreaFor(model => model.description, new { @rows = "10", @cols = "130", @style = "overflow:auto; resize: none;" })
+            @Html.ValidationMessageFor(model => model.description)
+         </div>
+
+         <div class="editor-label">
+            @Html.Label("活动图片:")<br/>
+            <br />
+            
+            <br/>
+            @{string pic_url = "http://218.94.40.114:25609/zhmdImageFiles/" + Html.DisplayFor(model => model.pic_url); }
+            <img alt="" style="max-width:600px;" id="result" src="@pic_url" />
+            <input class="text-box single-line" id="pic_url" name="pic_url" type="text" value="@Html.DisplayFor(model => model.pic_url)" readonly="readonly"/>
+         </div>
+
+         <div class="editor-label">
+            @Html.Label("活动链接:")
+            <input id="content_url" name="content_url" style="width:400px" type="text" value="@Html.DisplayFor(model => model.content_url)"/>
+            @Html.ValidationMessageFor(model => model.content_url)
+         </div>
+
+        <p>
+            <input type="submit" value="保存修改" />
+        </p>
+   
+}
+    <input type="button" id="btn_show" value="修改图片" />
+    <form id="form_upload" style="padding:20px; display:none;" action="@Url.Content("~/Home/Upload")" method="post" enctype="multipart/form-data">
+        <input name="upImg" style="width:350px;height:25px;" size="38" type="file"/><input type="submit" value="上传"/>
+    </form>
+</fieldset>
+<div>
+    @Html.ActionLink("返回活动管理", "Index")
+</div>
+
+    
+}

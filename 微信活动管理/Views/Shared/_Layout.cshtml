@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@ViewBag.Title</title>
+    <script src="@Url.Content("~/Scripts/fine-uploader.js")" type="text/javascript"></script> 
+    <script src="@Url.Content("~/Scripts/jquery.min.1.8.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("ExtraHead_Login",false)
+    <link href="@Url.Content("~/Content/base.css")" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="@Url.Content("~/images/coin.png")">
+    <style type="text/css">
+        #leftBlock{
+         margin:10px;
+         width:20%;
+         display:inline-block;
+         vertical-align: top;
+        }
+        #rightBlock{
+            margin:10px;
+            width:70%;
+            display:inline-block;
+            vertical-align: top;
+        }
+    </style>
+    @RenderSection("ExtraHead",false)
+
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#image_upload").bind("click", function () {
+                alert("abc");
+                var form = document.getElementById("image_upload_form");
+                form.submit();
+            });
+            $("#hide_pic").bind("click", function () {
+                $(".product_img").hide();
+                $("#hide_pic").hide();
+                $("#show_pic").show();
+            });
+
+            $("#show_pic").bind("click", function () {
+                $(".product_img").show();
+                $("#hide_pic").show();
+                $("#show_pic").hide();
+            });
+            $("#btn_show").bind("click", function () {
+                $("#form_upload").show();
+                var options = {
+                    success: function (responseText, statusText, xhr, $form) {
+                        var picPath = responseText
+                        if (picPath == "") {
+                            alert("上传图片失败");
+                        }
+                        else {
+                            alert(picPath);
+                            $("#form_upload").hide();
+                            $("#result").attr("src", "http://218.94.40.114:25609/zhmdImageFiles/" + picPath).show();
+                            $("#pic_url").val(picPath);
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    }
+                };
+
+                $("#form_upload").ajaxForm(options);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+            </div>
+            
+
+             <div class="nav-collapse" id="menucontainer">
+                <img id="pic" src="@Url.Content("~/images/网页首页图标.png")">
+                <ul id="menu">
+                   @* <li id="ind">@Html.ActionLink("主页", "Index", "Home")</li>*@
+                    <li id="manage">@Html.ActionLink("产品管理", "Index", "Product")</li>
+                    <li id="analyse">@Html.ActionLink("数据分析", "Index", "Browse")</li>
+                </ul>
+                <div id="logindisplay">
+                    @Html.Partial("_LogOnPartial")
+                </div>
+            </div>
+            
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+</body>
+</html>

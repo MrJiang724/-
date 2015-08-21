@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="zhmdProductModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="zhmdProductModelStoreContainer">
+    <EntitySet Name="adv_machine_product_list" EntityType="zhmdProductModel.Store.adv_machine_product_list" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="printdata" EntityType="zhmdProductModel.Store.printdata" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_ap" EntityType="zhmdProductModel.Store.tbl_ap" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_product" EntityType="zhmdProductModel.Store.tbl_product" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_product_browse_record" EntityType="zhmdProductModel.Store.tbl_product_browse_record" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_product_push_history" EntityType="zhmdProductModel.Store.tbl_product_push_history" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_product_type" EntityType="zhmdProductModel.Store.tbl_product_type" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="tbl_wx_user" EntityType="zhmdProductModel.Store.tbl_wx_user" store:Type="Tables" Schema="zhmd" />
+    <EntitySet Name="yanzhengma" EntityType="zhmdProductModel.Store.yanzhengma" store:Type="Tables" Schema="zhmd" />
+    <AssociationSet Name="fk_prodcut" Association="zhmdProductModel.Store.fk_prodcut">
+      <End Role="tbl_product" EntitySet="tbl_product" />
+      <End Role="tbl_product_push_history" EntitySet="tbl_product_push_history" />
+    </AssociationSet>
+    <AssociationSet Name="fk_product_type" Association="zhmdProductModel.Store.fk_product_type">
+      <End Role="tbl_product_type" EntitySet="tbl_product_type" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="adv_machine_product_list">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="machine_name" Type="varchar" MaxLength="50" />
+    <Property Name="location" Type="int" />
+  </EntityType>
+  <EntityType Name="printdata">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="decimal" Nullable="false" />
+    <Property Name="user_id" Type="varchar" MaxLength="35" />
+    <Property Name="machine_name" Type="varchar" MaxLength="50" />
+    <Property Name="print_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_ap">
+    <Key>
+      <PropertyRef Name="ap_mac" />
+    </Key>
+    <Property Name="ap_mac" Type="varchar" Nullable="false" MaxLength="32" />
+    <Property Name="store_id" Type="int" />
+    <Property Name="ap_groupname" Type="varchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="description" Type="varchar" Nullable="false" MaxLength="2048" />
+    <Property Name="content_url" Type="varchar" MaxLength="1024" />
+    <Property Name="product_type" Type="tinyint" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="expire_time" Type="datetime" />
+    <Property Name="push_level" Type="tinyint" Nullable="false" />
+    <Property Name="pic_url" Type="varchar" MaxLength="128" />
+    <Property Name="short_url" Type="varchar" MaxLength="1024" />
+    <Property Name="ticket_url" Type="varchar" MaxLength="1024" />
+    <Property Name="product_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_product_browse_record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="varchar" MaxLength="64" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="datetime" Type="datetime" />
+    <Property Name="browse_type" Type="tinyint" />
+    <Property Name="machine_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_product_push_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="store_id" Type="int" />
+    <Property Name="product_id" Type="int" />
+    <Property Name="openid" Type="varchar" MaxLength="128" />
+    <Property Name="mobile" Type="varchar" MaxLength="11" />
+    <Property Name="push_type" Type="enum" />
+    <Property Name="push_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_product_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="tinyint" Nullable="false" />
+    <Property Name="type_pic_url" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="parent_id" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="tbl_wx_user">
+    <Key>
+      <PropertyRef Name="openid" />
+    </Key>
+    <Property Name="public_number" Type="varchar" MaxLength="255" />
+    <Property Name="openid" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="nickname" Type="varchar" MaxLength="128" />
+    <Property Name="remark" Type="varchar" MaxLength="128" />
+    <Property Name="sex" Type="int" />
+    <Property Name="subscribe_time" Type="datetime" />
+    <Property Name="subscribe" Type="int" />
+    <Property Name="update_time" Type="datetime" />
+    <Property Name="headimgurl" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="yanzhengma">
+    <Key>
+      <PropertyRef Name="MachineName" />
+    </Key>
+    <Property Name="MachineName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="code" Type="varchar" MaxLength="10" />
+    <Property Name="NickName" Type="varchar" MaxLength="30" />
+    <Property Name="Location" Type="varchar" MaxLength="30" />
+    <Property Name="LocationName" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <Association Name="fk_prodcut">
+    <End Role="tbl_product" Type="zhmdProductModel.Store.tbl_product" Multiplicity="0..1" />
+    <End Role="tbl_product_push_history" Type="zhmdProductModel.Store.tbl_product_push_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_product">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="tbl_product_push_history">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_product_type">
+    <End Role="tbl_product_type" Type="zhmdProductModel.Store.tbl_product_type" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="zhmdProductModel.Store.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_product_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="product_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

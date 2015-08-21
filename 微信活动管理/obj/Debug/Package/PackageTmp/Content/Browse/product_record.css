@@ -1,0 +1,170 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul#list {
+    border-bottom: 1px #5C87B2 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: left;
+}
+
+ul#list li {
+	display:block;
+	font-size:13px;
+    display: inline;
+    list-style: none;
+	padding: 8px 2px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.3em;
+    background-color: #e8eef4;
+    color: #034af3;
+    border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+}
+ul#list li:hover{ background-color:#0F9; color:#fff;}
+
+ul#list li.selected  {
+    background-color:#000;
+    color: #000;
+}
+
+ul#menu li:active {
+    background-color: #000;
+    text-decoration: none;
+}
+
+
+.blue{ background-color:#000;}
+
+
+
+#list1:hover #type_0 { display:none;}
+
+
+
+ul{ background-color:#FFF;}
+
+
+
+#type_3 li{
+	  list-style: none;
+	  padding: 5px 0px;
+} 
+#type_3  a{ color:#00744b;}
+#type_3 li:hover{ background-color:#6CDF81;}
+#type_3 li:hover a{ text-decoration:none; color:#FFF;}
+
+#type_1 li{
+	  list-style: none;
+	  padding: 5px 0px;
+} 
+#type_1  a{ color:#00744b;}
+#type_1 li:hover{ background-color:#6CDF81;}
+#type_1 li:hover a{ text-decoration:none; color:#FFF;}
+
+#type_2 li{
+	  list-style: none;
+	  padding: 5px 0px;
+} 
+#type_2  a{ color:#00744b;}
+#type_2 li:hover{ background-color:#6CDF81;}
+#type_2 li:hover a{ text-decoration:none; color:#FFF;}
+
+#type_4 li{
+	  list-style: none;
+	  padding: 5px 0px;
+} 
+#type_4  a{ color:#00744b;}
+#type_4 li:hover{ background-color:#6CDF81;}
+#type_4 li:hover a{ text-decoration:none; color:#FFF;}
+
+
+#type_0 li{
+	  list-style: none;
+	  padding: 5px 0px;
+} 
+#type_0  a{ color:#00744b;}
+#type_0 li:hover{ background-color:#6CDF81;}
+#type_0 li:hover a{ text-decoration:none; color:#FFF;}
+
+
+#type_0{ display:none;}
+#type_1{ display:none;}
+#type_2{ display:none;}
+#type_3{ display:none;}
+#type_4{ display:none;}
+
+.select{ background-color:#94E4CE;}
+.select a{ text-decoration:none; color:#FFF;}
+
+
+
+/*报表*/
+.sheet{
+	margin:20px;
+	width:100%;
+	height:auto;
+	
+	
+	}
+.blue{ background-color:#000;}
+
+.menu-first{
+	        height:31px;
+			text-decoration:none;
+			line-height:22px;
+			font-size: 16px;
+			font-weight:bold;
+			text-align:left;
+			
+		}
+
+.menu-first:hover{
+			text-decoration: none;
+		}
+		/*二级菜单*/
+		.menu-second li a{
+			color:#999;
+			height:31px;
+			line-height:31px;
+			font-size: 12px;
+			text-align:center;
+		}
+		/*二级菜单鼠标划过样式*/
+		.menu-second li a:hover {
+			color:#FFF;
+			text-decoration: none;
+			background-color:#00744b;
+			
+		}
+		/*二级菜单选中状态*/
+		.menu-second-selected {
+			
+			height:31px;
+			line-height:31px;
+			
+			text-align:center;
+		}
+		/*覆盖bootstrap的样式*/
+		.nav-list,.nav-list li a{
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		#nava{ margin-top:20%;}
+		
+#leftBlock1{
+         margin:10px;
+         width:30%;
+         display:inline-block;
+         vertical-align: top;
+        }
+#rightBlock1{
+            margin:10px;
+            width:65%;
+            display:inline-block;
+            vertical-align: top;
+        }

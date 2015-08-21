@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/微信活动管理_deploy" />
+  <setParameter name="ApplicationServices-Web.config Connection String" value="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true" />
+  <setParameter name="zhmdEntities-Web.config Connection String" value="metadata=res://*/Models.DataBase.csdl|res://*/Models.DataBase.ssdl|res://*/Models.DataBase.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;Persist Security Info=True;server=172.168.30.141;User Id=zhmd;password=zhmd2015;database=zhmd;port=33690&quot;" />
+  <setParameter name="productEntities-Web.config Connection String" value="metadata=res://*/Models.ProductData.csdl|res://*/Models.ProductData.ssdl|res://*/Models.ProductData.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;Persist Security Info=True;server=172.168.30.141;User Id=zhmd;password=zhmd2015;database=zhmd;port=33690&quot;" />
+</parameters>

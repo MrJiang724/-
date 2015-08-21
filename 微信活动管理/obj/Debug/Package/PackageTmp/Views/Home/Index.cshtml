@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "邮政金融超市";
+    
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/login.css")" rel="stylesheet" type="text/css">            
+}
+@if (@User.Identity.IsAuthenticated)
+{
+    <h2>@ViewBag.Message</h2>
+}
+else
+{
+    <img style="width:100%;" src="@Url.Content("~/images/网页首页大图.png")" />
+    
+    <form action="@Url.Content("~/Account/LogOn")" method="post">    
+        <div  id="login">
+       
+            <div  style=" position:relative; left:20%;top:20%; width:60%; height:50%;" >
+              <p id="charact"> 管理员登录</p>
+
+            <div class="editor-field">
+                <input class="form-control" data-val="true" data-val-required="用户名是必需的。" id="UserName" placeholder="用户名" name="UserName" type="text" value=""/>
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-field">
+                <input class="form-control" data-val="true" data-val-required="密码是必需的。" id="Password" name="Password" placeholder="密码" type="password"/>
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+            <p>
+                <input id="loginbtn" type="submit" value="登录">
+                <input id="rebuild" type="reset" value="重置"> 
+            </p>
+            @if (ViewBag.error == "log fail")
+            {
+                <p id="error">用户名不存在或密码错误！</p>
+            }
+        </div>
+    </div>
+    
+</form>
+
+}
+
+<div class="intro">
+<span style="font-size:25px; color:#00744b;"><p>客户端下载</p></span><br>
+
+翼桶金是由江苏电信推出的一款移动产品,主要以电信业务为核心,采用任务代理，<br>
+任务推广，赚取佣金的模式面向大众用户，欢迎您成为翼桶金用户!<br>
+加入部落享受零成本,零库存的代理电信各类业务。通过做简单任务领取佣金，赚<br>
+取流量,话费，体验空间时光创意，实践的乐趣。<br>
+<img src="@Url.Content("~/images/introduct/")erweima.png" style=" height:60%; width:auto; position:absolute; left:70%; top:10%;"/>
+<button class=" btn btn-lg btn-success" style="margin-top:6%;"><a style=" color:#FFF;" href="http://fir.im/huitong">IPAD营业员版下载</a></button>
+</div><hr>
+
+
+
+
+
+
+<div class="intro">        
+   <span style="font-size:25px; color:#00744b;"><p>ipad版介绍</p></span><br>
+     <div style=" text-align:center; margin-bottom:30px;"><span>独有的任务机制,让你在轻松推广的同时获取利益分成......</span><br></div>
+         <img style=" width:45%; height:auto; margin-right:4%;" src="@Url.Content("~/images/introduct/")ipad/ipad1.png"  alt="First slide">
+         <img style=" width:45%; height:auto;" src="@Url.Content("~/images/introduct/")ipad/ipad1.png"  alt="First slide">
+     </div><hr>
+     
+     
+     
+     
+     
+     
+     <div class="intro">        
+   <span style="font-size:25px; color:#00744b;"><p>微信版介绍</p></span><br>
+   <div style=" text-align:center;  margin-bottom:30px;"><span>独有的任务机制,让你在轻松推广的同时获取利益分成......</span><br></div>
+         <img style=" width:30%; height:auto; margin-right:3%;" src="@Url.Content("~/images/introduct/")手机版/手机1.png" >
+          <img style=" width:30%; height:auto; margin-right:3%;" src="@Url.Content("~/images/introduct/")手机版/手机2.png" >
+           <img style=" width:30%; height:auto;" src="@Url.Content("~/images/introduct/")手机版/手机3.png" >
+       </div>
+    
+     
+     
+     
+   </div>
+        
+
+        
+  
+
+
+
+@*
+<img src="/Home/GetChart" alt="Chart" />
+<input type="button" id="btn_show" value="上传图片" /><br />
+<form id="form_upload" style="padding:20px; display:none;" action="/Home/Upload" method="post" enctype="multipart/form-data">
+    <input name="upImg" style="width:350px;height:25px;" size="38" type="file"/><input id="" type="submit" value="上传" />
+</form>
+<img alt="" style="display:none;max-width:600px;" id="result" src="" />
+<input  id="pic_url" type="text" />
+*@

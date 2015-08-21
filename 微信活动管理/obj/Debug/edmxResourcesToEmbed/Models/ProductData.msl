@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zhmdProductModelStoreContainer" CdmEntityContainer="productEntities">
+    <EntitySetMapping Name="tbl_product">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_product">
+        <MappingFragment StoreEntitySet="tbl_product">
+          <ScalarProperty Name="product_status" ColumnName="product_status" />
+          <ScalarProperty Name="ticket_url" ColumnName="ticket_url" />
+          <ScalarProperty Name="short_url" ColumnName="short_url" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="content_url" ColumnName="content_url" />
+          <ScalarProperty Name="product_type" ColumnName="product_type" />
+          <ScalarProperty Name="create_time" ColumnName="create_time" />
+          <ScalarProperty Name="expire_time" ColumnName="expire_time" />
+          <ScalarProperty Name="push_level" ColumnName="push_level" />
+          <ScalarProperty Name="pic_url" ColumnName="pic_url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product_type">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_type">
+        <MappingFragment StoreEntitySet="tbl_product_type">
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type_pic_url" ColumnName="type_pic_url" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="printdata">
+      <EntityTypeMapping TypeName="zhmdProductModel.printdata">
+        <MappingFragment StoreEntitySet="printdata">
+          <ScalarProperty Name="print_time" ColumnName="print_time" />
+          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product_browse_record">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_browse_record">
+        <MappingFragment StoreEntitySet="tbl_product_browse_record">
+          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+          <ScalarProperty Name="browse_type" ColumnName="browse_type" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product_push_history">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_push_history">
+        <MappingFragment StoreEntitySet="tbl_product_push_history">
+          <ScalarProperty Name="push_time" ColumnName="push_time" />
+          <ScalarProperty Name="push_type" ColumnName="push_type" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="openid" ColumnName="openid" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_wx_user">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_wx_user">
+        <MappingFragment StoreEntitySet="tbl_wx_user">
+          <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="subscribe" ColumnName="subscribe" />
+          <ScalarProperty Name="subscribe_time" ColumnName="subscribe_time" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="openid" ColumnName="openid" />
+          <ScalarProperty Name="public_number" ColumnName="public_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adv_machine_product_list">
+      <EntityTypeMapping TypeName="zhmdProductModel.adv_machine_product_list">
+        <MappingFragment StoreEntitySet="adv_machine_product_list">
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yanzhengma">
+      <EntityTypeMapping TypeName="zhmdProductModel.yanzhengma">
+        <MappingFragment StoreEntitySet="yanzhengma">
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ap">
+      <EntityTypeMapping TypeName="zhmdProductModel.tbl_ap">
+        <MappingFragment StoreEntitySet="tbl_ap">
+          <ScalarProperty Name="ap_groupname" ColumnName="ap_groupname" />
+          <ScalarProperty Name="store_id" ColumnName="store_id" />
+          <ScalarProperty Name="ap_mac" ColumnName="ap_mac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

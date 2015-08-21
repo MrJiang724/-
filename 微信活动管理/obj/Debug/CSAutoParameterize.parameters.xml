@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ApplicationServices-Web.config Connection String" description="ApplicationServices 应用程序在 web.config 中用来访问数据库的连接字符串。" defaultvalue="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\学习\\C\#\\微信活动管理\\微信活动管理\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ApplicationServices']/@connectionString" />
+  </parameter>
+  <parameter name="productEntities-Web.config Connection String" description="productEntities 应用程序在 web.config 中用来访问数据库的连接字符串。" defaultvalue="metadata=res://*/Models.ProductData.csdl|res://*/Models.ProductData.ssdl|res://*/Models.ProductData.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;Persist Security Info=True;server=172.168.30.141;User Id=zhmd;password=zhmd2015;database=zhmd;port=33690&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\学习\\C\#\\微信活动管理\\微信活动管理\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='productEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "摄像头数据分析";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/Browse/shexiang.css")" rel="stylesheet" type="text/css">
+}
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+                <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - 摄像头数据分析</p>
+            }
+        </text>
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+
+    <p>摄像头未布置，暂时无该功能！</p>

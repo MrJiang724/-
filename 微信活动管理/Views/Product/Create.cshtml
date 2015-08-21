@@ -1,0 +1,86 @@
+﻿@model 微信活动管理.Models.tbl_product
+
+@{
+    ViewBag.Title = "邮政金融超市 - 新增活动";
+}
+
+@if(!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+        <p  class="navigation">@Html.ActionLink("产品管理", "Index", "Product") - 新增产品</p>
+
+
+
+<fieldset>
+<legend>新增产品</legend>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+        <div class="editor-label">
+            @Html.Label("产品名称:")
+            <input class="text-box single-line" style="width:400px" id="product_name" name="product_name" type="text" value=""/>
+            @Html.ValidationMessageFor(model => model.product_name)
+        </div>
+            
+
+         <div class="editor-label">
+            @Html.Label("产品分类:")
+            @Html.DropDownListFor(model => model.product_type, (IEnumerable<SelectListItem>)ViewBag.types)
+            @Html.ValidationMessageFor(model => model.product_type)
+
+            &nbsp;&nbsp;&nbsp;
+
+            @Html.Label("推送等级:")
+            @Html.DropDownListFor(model => model.push_level, (IEnumerable<SelectListItem>)ViewBag.push_levels)
+            @Html.ValidationMessageFor(model => model.push_level)
+         </div>
+
+         <div class="editor-label">
+            @Html.Label("产品描述:")
+         </div>
+         <div class="editor-label">
+            @Html.TextAreaFor(model => model.description, new { @rows = "10", @cols = "130", @style = "overflow:auto; resize: none;" })
+            @Html.ValidationMessageFor(model => model.description)
+         </div>
+
+         <div class="editor-label">
+            @Html.Label("产品图片:")
+         </div>
+         <img alt="" style="display:none;max-width:600px;" id="result" src="" />
+         <input  id="pic_url"  name="pic_url" type="text" readonly="readonly"/>
+
+
+         <div class="editor-label">
+            @Html.Label("产品链接:")
+            @Html.EditorFor(model => model.content_url, new { @style = "width:480px" })
+            @Html.ValidationMessageFor(model => model.content_url)
+         </div>
+
+
+        <p>
+            <input type="submit" value="增加产品" />
+        </p>
+
+}
+
+<input type="button" id="btn_show" value="上传图片" />
+<form id="form_upload" style="padding:20px; display:none;" action="@Url.Content("~/Home/Upload")"  method="post" enctype="multipart/form-data">
+    <input name="upImg" style="width:350px;height:25px;" size="38" type="file"/><input id="pic_upload" type="submit" value="上传"/>
+</form>
+<br/>
+
+
+
+</fieldset>
+
+<div>
+    @Html.ActionLink("返回产品管理", "Index")
+</div>
+
+}

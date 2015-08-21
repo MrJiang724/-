@@ -1,0 +1,195 @@
+
+
+.btn-select { 
+position: relative; 
+display: inline-block; 
+width: 180px; 
+height: 30px; 
+background-color:#00744b; 
+font: 20px "Microsoft YaHei"; 
+color: #fff; 
+} 
+.btn-select .cur-select { 
+position: absolute; 
+display: block; 
+width: 150px; 
+height: 25px; 
+line-height: 25px; 
+background: #00744b no-repeat 125px center; 
+text-indent: 10px; 
+} 
+.btn-select:hover .cur-select { 
+background-color: #00744b; 
+} 
+.btn-select select { 
+position: absolute; 
+top: 0; 
+left: 0; 
+width: 180px; 
+height: 30px; 
+opacity: 0; 
+filter: alpha(opacity: 0;); 
+font: 20px "Microsoft YaHei"; 
+color: #00744b; 
+}
+
+ 
+.btn-select select option { 
+text-indent: 10px; 
+}
+
+ 
+.btn-select select option:hover { 
+background-color: #00744b; 
+color: #fff; 
+} 
+
+
+
+	
+	
+	
+			
+
+
+
+
+
+
+		/*左侧菜单*/
+		.sidebar-menu{
+			border-right: 1px solid #c4c8cb;
+		}
+		/*一级菜单*/
+		.menu-first{
+			text-decoration:none;
+			line-height:22px;
+			background-color: #e9e9e9;
+			border-top: 1px solid #efefef;
+			border-bottom: 1px solid #e1e1e1;
+			text-align:center;
+			font-size: 20px;
+			font-weight: normal;
+			
+		}
+		/*一级菜单鼠标划过状态*/
+		.menu-first:hover{
+			text-decoration: none;
+			background-color: #d6d4d5;
+			border-top: 1px solid #b7b7b7;
+			border-bottom: 1px solid #acacac;
+		}
+		/*二级菜单*/
+		.menu-second li a{
+			background-color: #f6f6f6;
+			height:31px;
+			line-height:31px;
+			border-top: 1px solid #efefef;
+			border-bottom: 1px solid #efefef;
+			font-size: 12px;
+			text-align:center;
+		}
+		/*二级菜单鼠标划过样式*/
+		.menu-second li a:hover {
+			text-decoration: none;
+			background-color: #66c3ec;
+			border-top: 1px solid #83ceed;
+			border-bottom: 1px solid #83ceed;
+			border-right: 3px solid #f8881c;
+			border-left: 3px solid #66c3ec;
+		}
+		/*二级菜单选中状态*/
+		.menu-second-selected {
+			background-color: #66c3ec;
+			height:31px;
+			line-height:31px;
+			border-top: 1px solid #83ceed;
+			border-bottom: 1px solid #83ceed;
+			border-right: 3px solid #f8881c;
+			border-left: 3px solid #66c3ec;
+			text-align:center;
+		}
+		/*覆盖bootstrap的样式*/
+		.nav-list,.nav-list li a{
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		/*下拉框头部*/
+       .heading{
+		  
+		   position:relative;
+		   width:100%;
+		   background-color:#f7f7f7;
+		  
+		}
+		
+		
+		.in-font{
+			font-size:larger;
+			color:#00744b;
+			
+			}
+		#last{
+			display:none;
+			
+			}
+			
+						
+		.heading:hover{background-color:#0C9;}
+		
+		.heading:hover p{color:#FFF;}
+		
+		.heading:hover #primary{ display:none;   }
+		.heading:hover #last{ display:inline;}	
+			
+		.heading-img{
+		    position:absolute;
+			left:95%;
+			top:30%;
+			width:20px;
+			height:20px;
+		}
+		.heading-radio{
+			position:absolute;
+			left:0%;
+			top:0%;	
+		}
+		.heading-font{
+			position:absolute;
+			left:15%;
+			top:20%;	
+			
+			}
+		
+       /*内容部分*/
+	   .heading-container{
+		   margin-bottom:25px;
+		   background-color:#f7f7f7;
+		   width:100%;
+		   position:relative;
+	  }
+	  .product-img{
+		  
+		  width:80%;
+		  height:auto;
+		  
+		  }
+	  .inner{
+		  position:absolute;
+		  left:75%;
+		  top:20%;
+		  
+		  }  
+	  .heading-container a{ color:#FFF;}
+	  .heading-container a:hover{ text-decoration:none;}
+		
+	   
+		

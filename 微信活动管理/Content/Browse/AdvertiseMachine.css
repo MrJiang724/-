@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+#shanxilu{ }
+#zhongyangmen{ display:none;}
+
+#sxl{ margin-right:5%; margin-top:10px; margin-bottom:10px;}
+#zym{ margin-right:5%; margin-top:10px; margin-bottom:10px;}
+
+
+
+.con button{ margin-top:10px; margin-bottom:10px;}	   
+.con table{ width:100%; height:auto;}
+
+table {
+	
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+.top th{ background-color:#00744b; color:#FFF;}	
+.hid{ display:none;}   	
+.menu-first{
+	        height:31px;
+			text-decoration:none;
+			line-height:22px;
+			font-size: 16px;
+			font-weight:bold;
+			text-align:left;
+			
+		}
+
+.menu-first:hover{
+			text-decoration: none;
+		}
+		/*二级菜单*/
+		.menu-second li a{
+			color:#999;
+			height:31px;
+			line-height:31px;
+			font-size: 12px;
+			text-align:center;
+		}
+		/*二级菜单鼠标划过样式*/
+		.menu-second li a:hover {
+			color:#FFF;
+			text-decoration: none;
+			background-color:#00744b;
+			
+		}
+		/*二级菜单选中状态*/
+		.menu-second-selected {
+			
+			height:31px;
+			line-height:31px;
+			
+			text-align:center;
+		}
+		/*覆盖bootstrap的样式*/
+		.nav-list,.nav-list li a{
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		#nava{ margin-top:20%;}
+		

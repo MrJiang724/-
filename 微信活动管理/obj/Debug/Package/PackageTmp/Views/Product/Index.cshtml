@@ -1,0 +1,92 @@
+﻿@model IEnumerable<微信活动管理.Models.ProductModel>
+@using 微信活动管理.Config
+
+@{
+    ViewBag.Title = "邮政金融超市 - 产品管理";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/product_menu.css")" rel="stylesheet" type="text/css" />
+}
+
+@if (!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+        <p  class="navigation">产品管理</p>
+ 
+
+
+<div id="leftBlock">
+    <div id="Block">
+        <div class="row-fluid"><div class="span12"><div class="row-fluid menu-first"><div style="display:block;" class="offset1 span2"><div class="sidebar-menu">
+						<a href="#userMeun" class="nav-header menu-first" data-toggle="collapse">
+                            <span>活动管理</span></a>
+         <ul id="userMeun" class="nav nav-list menu-second in collapse" style="height: auto;">
+            <li> @Html.ActionLink("添加活动", "Create")</li>
+            <li>@Html.ActionLink("添加活动分类", "CreateNewType")</li>
+            <li>@Html.ActionLink("设置广告机滚动大活动", "Index", "Adv")</li> 
+        </ul>
+        <a href="#productMenu" style="display:block;" class="nav-header " data-toggle="collapse"> 活动分类</a>
+        @if (ViewBag.types != null)
+        {
+            <ul id="productMenu" class="nav nav-list menu-second in collapse" style="height: auto;">
+            <li>@Html.ActionLink("所有活动", "Index", new { id = 0 })</li>
+            @foreach (var type in ViewBag.types)
+            {
+                <li>@Html.ActionLink((string)type.name, "Index", new { id = type.id })</li>
+            }
+            </ul>
+        }
+        </div></div></div></div></div>
+    </div>
+</div>
+
+<div id="rightBlock">
+    <div id="Block">
+        @foreach (var item in Model)
+        {
+            string div_id = "product_" + item.product_id;
+            string div_herf = "#" + div_id;
+            var img_src = "http://218.94.40.114:25609/zhmdImageFiles/" + Html.DisplayFor(modelItem => item.pic_url);
+            <div class="heading">
+                <p class="heading-font"><p class="in-font">
+                    &nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.product_name)</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;创建时间：@Html.DisplayFor(modelItem => item.create_time)
+                    &nbsp;&nbsp;活动类型：@Html.DisplayFor(modelItem => item.product_type)
+                    &nbsp;&nbsp;推送等级：@Html.DisplayFor(modelItem => item.push_level)
+                    
+                </p>   
+                <a class="accordion-toggle" data-toggle="collapse" href="@div_herf">
+                    <img id="primary" class="heading-img" src="@Url.Content("~/images/展开小图标-02.png")"/>
+                    <img id="last"  class="heading-img" src="@Url.Content("~/images/展开小图标-03.png")"/> 
+                </a>
+            </div>
+            <div id="@div_id" class="collapse  heading-container">
+                <img src="@img_src" style="max-width:500px;" class="product_img"/>
+                <br/>
+                <div class="inner">
+                    广告机用二维码：
+                    <img src="@Html.DisplayFor(modelItem => item.ticket_url)" style="max-width:100px;" class="product_img" />
+                </div>
+                <p class="introduction">@Html.DisplayFor(modelItem => item.description)</p>
+                    <div class="btn btn-success">@Html.ActionLink("修改", "Edit", new { id = item.product_id })</div>
+                    <div class="btn btn-success">@Html.ActionLink("删除", "Delete", new { id = item.product_id })</div>
+                    <div class="btn btn-success"><a href="@Html.DisplayFor(modelItem => item.content_url)">原文网址</a></div>
+                    <div class="btn btn-success"><a href="@Html.DisplayFor(modelItem => item.short_url)">短链接网址</a></div>
+                    @*
+                        <button type="button" class="btn ">@Html.ActionLink("生成二维码", "CreateTicket", new { id = item.product_id })</button>
+                        <button type="button" class="btn ">@Html.ActionLink("生成短链接", "CreateShortUrl", new { id = item.product_id })</button>
+                    *@
+             </div>
+           
+        }
+      </div>
+</div>
+    
+    
+}

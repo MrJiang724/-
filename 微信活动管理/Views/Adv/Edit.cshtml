@@ -1,0 +1,116 @@
+﻿@model 微信活动管理.Models.adv_machine_product_list
+
+@{
+    ViewBag.Title = "邮政金融超市 - 设置大屏活动";
+}
+
+@section ExtraHead{
+    <script type="text/javascript">
+        function $(id) {
+            return document.getElementById(id);
+        }
+        function test() {
+            var eChild = $('child_' + $("parent").value).cloneNode(true);
+            eChild.name = "child";
+            eChild.style.display = "";
+            eChild.value = "c2"
+            $("cspan").innerHTML = "";
+            $("cspan").appendChild(eChild);
+            x = document.getElementById("product_id");
+            x.value = eChild.value;   
+        }
+        function change(value) {
+            x = document.getElementById("product_id");
+            x.value = value;   
+        }
+    </script>
+}
+
+
+@if(!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+<p  class="navigation">@Html.ActionLink("广告机滚屏管理","Index","Adv") - 广告机滚屏活动设置</p>
+
+
+<h2>设置活动</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+
+
+    <fieldset>
+
+        
+
+        <div class="editor-label">
+            @Html.Label("选择活动")
+        </div>
+        <div class="editor-field">
+            <select id="parent" onchange="test();">
+            @for (int i = 0; i < ViewBag.typeList.Count; i++)
+            {
+                if (@ViewBag.typeList[i] == @ViewBag.type)
+                {
+                    <option value="@i" selected="selected">@ViewBag.typeList[i]</option>
+                }
+                else
+                {
+                    <option value="@i">@ViewBag.typeList[i]</option>
+                }
+            }
+            </select>
+            <span id="cspan"></span>
+            @for (int i = 0; i < @ViewBag.productList.Count; i++)
+            {
+                string name = "child_" + i;
+                <select id="@name" style="display: none;" onchange="change(this.value)" >
+                @foreach (微信活动管理.Models.tbl_product item in @ViewBag.productList[i])
+                {
+                    if (item.product_id == ViewBag.product_id)
+                    {
+                        <option value="@item.product_id" selected="selected">@item.product_name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.product_id">@item.product_name</option>
+                    }
+
+                }
+                </select>
+            }
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.location)
+            @Html.HiddenFor(model => model.machine_name)
+            <input id="product_id" name="product_id" type="text" style="display: none;" value="@Html.DisplayFor(model => model.product_id)" class="text-box single-line"/>
+            <p>
+                <input type="submit" value="保存更改" />
+            </p>
+        }
+    </fieldset>
+
+
+<div>
+    @Html.ActionLink("返回", "Index")
+</div>
+
+
+<script type="text/javascript">
+    test();
+</script>
+    
+    
+}

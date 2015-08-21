@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+  <get-product-record-url>http://218.94.40.114:25609/zhmd/queryProductReport.action?productId=</get-product-record-url>
+  <get-adv-machine-record-url>http://218.94.40.114:25609/zhmd/servlet/ProductStatisticsServlet</get-adv-machine-record-url>
+  <get-ticket-url>http://218.94.40.114:25609/zhmd/servlet/WeixinEventServlet?eventID=EVENT_ID</get-ticket-url>
+  <get-short-url>http://218.94.40.114:25609/zhmd/servlet/WeixinEventServlet</get-short-url>
+  <pic-url>http://218.94.40.114:25609/zhmdImageFiles/</pic-url>
+  <pic-save-path>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0\webapps\zhmdImageFiles\</pic-save-path>
+  <local-url>http://172.168.30.141:25611/zhmd/</local-url>
+  <mysql-connection>Server=172.168.30.141;Database=zhmd;uid=zhmd;pwd=zhmd2015;port=33690</mysql-connection>
+</xml>

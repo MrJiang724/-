@@ -1,0 +1,156 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background-color:#c5c5c5;
+	
+	}
+
+#menucontainer{
+	position:relative;
+	background-color:#00744b;
+	}
+		
+#ind{
+	padding:20px 2%;
+	text-decoration: none;
+	position:absolute;
+	left:20%;
+	top:0%;
+	list-style:none;
+	}
+	
+	
+#ind a{ color:#FFF;}  #manage a{ color:#FFF;} #analyse a{ color:#FFF;}
+#manage{
+	padding:20px 2%;
+	text-decoration: none;
+	position:absolute;
+	left:26%;
+	top:0%;
+	list-style:none;}
+	
+#analyse{
+	padding:20px 2%;
+	text-decoration: none;
+	position:absolute;
+	left:34%;
+	top:0%;
+	list-style:none;}
+	
+#menu{
+	margin-bottom:0px;
+	
+	}
+#menucontainer{
+	padding-top:10px;
+	padding-bottom:50px;
+	}
+	
+#pic{
+	position:absolute;
+	left:5%;
+	
+	
+	}
+#charact{
+	font:"Courier New", Courier, monospace;
+	margin-top:20px;
+	
+	}
+#error{
+	color:#F00;
+	
+	
+	}
+
+
+	
+#manage:hover{
+	
+    text-decoration: none;
+	
+	}
+
+#ind:hover{
+	
+    text-decoration: none;
+	
+	}
+#analyse:hover{
+    text-decoration: none;
+
+	}	
+	
+#ind:hover a{ text-decoration:none; color:#FFF;}
+#manage:hover a{ text-decoration:none; color:#FFF;}
+#analyse:hover a{ text-decoration:none; color:#FFF;}	
+
+#logindisplay{
+	position:absolute;
+	left:80%;
+	top:20%;
+	color:#FFF;	
+	text-align:right;
+	float:right;
+	
+	}
+#logindisplay a{ color:#FFF; }
+#logindisplay a:hover{
+	text-decoration:none;}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+/*报表*/
+.sheet{
+	margin:0px;
+	width:45%;
+	height:auto;
+	
+	 border: solid 1px #e8eef4;
+    border-collapse: collapse;
+	}
+
+.sheet td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+.sheet th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+
+#main {
+	padding:20px;
+	min-height:450px;
+	margin:20px 20px 10px 20px;
+    background-color: #fff;
+    border-radius: 14px ;
+    -webkit-border-radius: 14px ;
+    -moz-border-radius: 14px;
+}
+
+
+/*导航*/
+.navigation { font-size:18px;}
+.navigation a{ font-size:25px;}
+.navigation a:hover{ text-decoration:none;color:#063;  }
+
+
+
+		
+		
+		
+	
+
+
+

@@ -1,0 +1,7 @@
+D:\学习\C#\微信活动管理\微信活动管理\bin\微信活动管理.dll
+D:\学习\C#\微信活动管理\微信活动管理\bin\微信活动管理.pdb
+D:\学习\C#\微信活动管理\微信活动管理\bin\EntityFramework.dll
+D:\学习\C#\微信活动管理\微信活动管理\bin\EntityFramework.xml
+D:\学习\C#\微信活动管理\微信活动管理\obj\Debug\ResolveAssemblyReference.cache
+D:\学习\C#\微信活动管理\微信活动管理\obj\Debug\微信活动管理.dll
+D:\学习\C#\微信活动管理\微信活动管理\obj\Debug\微信活动管理.pdb

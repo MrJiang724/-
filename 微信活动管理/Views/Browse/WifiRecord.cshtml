@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Wifi数据分析";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/Browse/wifi.css")" rel="stylesheet" type="text/css">
+}
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+                <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - Wifi数据分析</p>
+            }
+        </text>
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+    
+    <div id="chart1" style="height:400px; width:900px; display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+
+    <p id="chart1_address" style="display:none">@Url.Content("~/Browse/GetWifiConnectJson")</p>
+    <script>
+        var address = document.getElementById("chart1_address").innerHTML;
+        getdata(address, 'chart1', createWifiChart);
+
+    </script>
+
+  

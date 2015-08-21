@@ -1,0 +1,60 @@
+﻿@model IEnumerable<微信活动管理.Models.AdvMachineProduct>
+
+@{
+    ViewBag.Title = "邮政金融超市 - 大屏活动一览";
+}
+
+@if (!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+<p  class="navigation">广告机滚屏管理</p>
+
+
+<h2>广告机滚屏活动列表</h2>
+<table class="sheet" style="width:75%;">
+    <tr>
+        <th>
+            产品名
+        </th>
+        <th>
+            广告机
+        </th>
+        <th>
+            滚屏位置
+        </th>
+        <th></th>
+    </tr>
+@{
+    var m = Model.ToArray();
+    for (int i = 0; i < 6; i++)
+    {
+        var item = m[i];
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adv_location)
+        </td>
+        <td>
+            @Html.ActionLink("活动详情", "Details", new { id = item.id }) |
+            @Html.ActionLink("更改活动", "Edit", new { id = item.id }) 
+            
+        </td>
+    </tr>
+    }
+}
+
+</table>
+
+    
+}

@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="zhmdProductModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="zhmdProductModelStoreContainer">
+          <EntitySet Name="adv_machine_product_list" EntityType="zhmdProductModel.Store.adv_machine_product_list" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="printdata" EntityType="zhmdProductModel.Store.printdata" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_ap" EntityType="zhmdProductModel.Store.tbl_ap" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_product" EntityType="zhmdProductModel.Store.tbl_product" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_product_browse_record" EntityType="zhmdProductModel.Store.tbl_product_browse_record" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_product_push_history" EntityType="zhmdProductModel.Store.tbl_product_push_history" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_product_type" EntityType="zhmdProductModel.Store.tbl_product_type" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="tbl_wx_user" EntityType="zhmdProductModel.Store.tbl_wx_user" store:Type="Tables" Schema="zhmd" />
+          <EntitySet Name="yanzhengma" EntityType="zhmdProductModel.Store.yanzhengma" store:Type="Tables" Schema="zhmd" />
+          <AssociationSet Name="fk_prodcut" Association="zhmdProductModel.Store.fk_prodcut">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_product_push_history" EntitySet="tbl_product_push_history" />
+          </AssociationSet>
+          <AssociationSet Name="fk_product_type" Association="zhmdProductModel.Store.fk_product_type">
+            <End Role="tbl_product_type" EntitySet="tbl_product_type" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="adv_machine_product_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="location" Type="int" />
+        </EntityType>
+        <EntityType Name="printdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="35" />
+          <Property Name="machine_name" Type="varchar" MaxLength="50" />
+          <Property Name="print_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ap">
+          <Key>
+            <PropertyRef Name="ap_mac" />
+          </Key>
+          <Property Name="ap_mac" Type="varchar" Nullable="false" MaxLength="32" />
+          <Property Name="store_id" Type="int" />
+          <Property Name="ap_groupname" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="2048" />
+          <Property Name="content_url" Type="varchar" MaxLength="1024" />
+          <Property Name="product_type" Type="tinyint" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="expire_time" Type="datetime" />
+          <Property Name="push_level" Type="tinyint" Nullable="false" />
+          <Property Name="pic_url" Type="varchar" MaxLength="128" />
+          <Property Name="short_url" Type="varchar" MaxLength="1024" />
+          <Property Name="ticket_url" Type="varchar" MaxLength="1024" />
+          <Property Name="product_status" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_product_browse_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="varchar" MaxLength="64" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="datetime" Type="datetime" />
+          <Property Name="browse_type" Type="tinyint" />
+          <Property Name="machine_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_product_push_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="store_id" Type="int" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="openid" Type="varchar" MaxLength="128" />
+          <Property Name="mobile" Type="varchar" MaxLength="11" />
+          <Property Name="push_type" Type="enum" />
+          <Property Name="push_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_product_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" Nullable="false" />
+          <Property Name="type_pic_url" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="parent_id" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_wx_user">
+          <Key>
+            <PropertyRef Name="openid" />
+          </Key>
+          <Property Name="public_number" Type="varchar" MaxLength="255" />
+          <Property Name="openid" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="nickname" Type="varchar" MaxLength="128" />
+          <Property Name="remark" Type="varchar" MaxLength="128" />
+          <Property Name="sex" Type="int" />
+          <Property Name="subscribe_time" Type="datetime" />
+          <Property Name="subscribe" Type="int" />
+          <Property Name="update_time" Type="datetime" />
+          <Property Name="headimgurl" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="yanzhengma">
+          <Key>
+            <PropertyRef Name="MachineName" />
+          </Key>
+          <Property Name="MachineName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="code" Type="varchar" MaxLength="10" />
+          <Property Name="NickName" Type="varchar" MaxLength="30" />
+          <Property Name="Location" Type="varchar" MaxLength="30" />
+          <Property Name="LocationName" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="fk_prodcut">
+          <End Role="tbl_product" Type="zhmdProductModel.Store.tbl_product" Multiplicity="0..1" />
+          <End Role="tbl_product_push_history" Type="zhmdProductModel.Store.tbl_product_push_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tbl_product_push_history">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_product_type">
+          <End Role="tbl_product_type" Type="zhmdProductModel.Store.tbl_product_type" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="zhmdProductModel.Store.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="product_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zhmdProductModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="productEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_product" EntityType="zhmdProductModel.tbl_product" />
+          <EntitySet Name="tbl_product_type" EntityType="zhmdProductModel.tbl_product_type" />
+          <AssociationSet Name="fk_product_type" Association="zhmdProductModel.fk_product_type">
+            <End Role="tbl_product_type" EntitySet="tbl_product_type" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
+          </AssociationSet>
+          <EntitySet Name="printdata" EntityType="zhmdProductModel.printdata" />
+          <EntitySet Name="tbl_product_browse_record" EntityType="zhmdProductModel.tbl_product_browse_record" />
+          <EntitySet Name="tbl_product_push_history" EntityType="zhmdProductModel.tbl_product_push_history" />
+          <EntitySet Name="tbl_wx_user" EntityType="zhmdProductModel.tbl_wx_user" />
+          <AssociationSet Name="fk_prodcut" Association="zhmdProductModel.fk_prodcut">
+            <End Role="tbl_product" EntitySet="tbl_product" />
+            <End Role="tbl_product_push_history" EntitySet="tbl_product_push_history" />
+          </AssociationSet>
+          <EntitySet Name="adv_machine_product_list" EntityType="zhmdProductModel.adv_machine_product_list" />
+          <EntitySet Name="yanzhengma" EntityType="zhmdProductModel.yanzhengma" />
+          <EntitySet Name="tbl_ap" EntityType="zhmdProductModel.tbl_ap" />
+        </EntityContainer>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <Property Name="content_url" Type="String" />
+          <Property Name="product_type" Type="SByte" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" />
+          <Property Name="expire_time" Type="DateTime" />
+          <Property Name="push_level" Type="SByte" Nullable="false" />
+          <Property Name="pic_url" Type="String" />
+          <NavigationProperty Name="tbl_product_type" Relationship="zhmdProductModel.fk_product_type" FromRole="tbl_product" ToRole="tbl_product_type" />
+          <NavigationProperty Name="tbl_product_push_history" Relationship="zhmdProductModel.fk_prodcut" FromRole="tbl_product" ToRole="tbl_product_push_history" />
+          <Property Type="String" Name="short_url" />
+          <Property Type="String" Name="ticket_url" />
+          <Property Type="Boolean" Name="product_status" />
+        </EntityType>
+        <EntityType Name="tbl_product_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="SByte" Name="id" Nullable="false" />
+          <Property Type="String" Name="type_pic_url" />
+          <Property Type="String" Name="name" />
+          <Property Type="SByte" Name="parent_id" />
+          <NavigationProperty Name="tbl_product" Relationship="zhmdProductModel.fk_product_type" FromRole="tbl_product_type" ToRole="tbl_product" />
+        </EntityType>
+        <Association Name="fk_product_type">
+          <End Type="zhmdProductModel.tbl_product_type" Role="tbl_product_type" Multiplicity="0..1" />
+          <End Type="zhmdProductModel.tbl_product" Role="tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="product_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="printdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Decimal" Name="id" Nullable="false" />
+          <Property Type="String" Name="user_id" />
+          <Property Type="String" Name="machine_name" />
+          <Property Type="DateTime" Name="print_time" />
+        </EntityType>
+        <EntityType Name="tbl_product_browse_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="user_id" />
+          <Property Type="Int32" Name="product_id" />
+          <Property Type="DateTime" Name="datetime" />
+          <Property Type="SByte" Name="browse_type" />
+          <Property Type="String" Name="machine_name" />
+        </EntityType>
+        <EntityType Name="tbl_product_push_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="store_id" />
+          <Property Type="Int32" Name="product_id" />
+          <Property Type="String" Name="openid" />
+          <Property Type="String" Name="mobile" />
+          <Property Type="String" Name="push_type" />
+          <Property Type="DateTime" Name="push_time" />
+          <NavigationProperty Name="tbl_product" Relationship="zhmdProductModel.fk_prodcut" FromRole="tbl_product_push_history" ToRole="tbl_product" />
+        </EntityType>
+        <EntityType Name="tbl_wx_user">
+          <Key>
+            <PropertyRef Name="openid" />
+          </Key>
+          <Property Type="String" Name="public_number" />
+          <Property Type="String" Name="openid" Nullable="false" />
+          <Property Type="String" Name="nickname" />
+          <Property Type="String" Name="remark" />
+          <Property Type="Int32" Name="sex" />
+          <Property Type="DateTime" Name="subscribe_time" />
+          <Property Type="Int32" Name="subscribe" />
+          <Property Type="DateTime" Name="update_time" />
+          <Property Type="String" Name="headimgurl" />
+        </EntityType>
+        <Association Name="fk_prodcut">
+          <End Type="zhmdProductModel.tbl_product" Role="tbl_product" Multiplicity="0..1" />
+          <End Type="zhmdProductModel.tbl_product_push_history" Role="tbl_product_push_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tbl_product_push_history">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="adv_machine_product_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="product_id" />
+          <Property Type="String" Name="machine_name" />
+          <Property Type="Int32" Name="location" />
+        </EntityType>
+        <EntityType Name="yanzhengma">
+          <Key>
+            <PropertyRef Name="MachineName" />
+          </Key>
+          <Property Type="String" Name="MachineName" Nullable="false" />
+          <Property Type="String" Name="code" />
+          <Property Type="String" Name="NickName" />
+          <Property Type="String" Name="Location" />
+          <Property Type="String" Name="LocationName" />
+        </EntityType>
+        <EntityType Name="tbl_ap">
+          <Key>
+            <PropertyRef Name="ap_mac" />
+          </Key>
+          <Property Type="String" Name="ap_mac" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="store_id" />
+          <Property Type="String" Name="ap_groupname" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zhmdProductModelStoreContainer" CdmEntityContainer="productEntities">
+          <EntitySetMapping Name="tbl_product"><EntityTypeMapping TypeName="zhmdProductModel.tbl_product"><MappingFragment StoreEntitySet="tbl_product">
+            <ScalarProperty Name="product_status" ColumnName="product_status" />
+                <ScalarProperty Name="ticket_url" ColumnName="ticket_url" />
+                <ScalarProperty Name="short_url" ColumnName="short_url" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+            <ScalarProperty Name="product_name" ColumnName="product_name" />
+            <ScalarProperty Name="description" ColumnName="description" />
+            <ScalarProperty Name="content_url" ColumnName="content_url" />
+            <ScalarProperty Name="product_type" ColumnName="product_type" />
+            <ScalarProperty Name="create_time" ColumnName="create_time" />
+            <ScalarProperty Name="expire_time" ColumnName="expire_time" />
+            <ScalarProperty Name="push_level" ColumnName="push_level" />
+            <ScalarProperty Name="pic_url" ColumnName="pic_url" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tbl_product_type">
+            <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_type">
+              <MappingFragment StoreEntitySet="tbl_product_type">
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type_pic_url" ColumnName="type_pic_url" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="printdata">
+            <EntityTypeMapping TypeName="zhmdProductModel.printdata">
+              <MappingFragment StoreEntitySet="printdata">
+                <ScalarProperty Name="print_time" ColumnName="print_time" />
+                <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product_browse_record">
+            <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_browse_record">
+              <MappingFragment StoreEntitySet="tbl_product_browse_record">
+                <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+                <ScalarProperty Name="browse_type" ColumnName="browse_type" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product_push_history">
+            <EntityTypeMapping TypeName="zhmdProductModel.tbl_product_push_history">
+              <MappingFragment StoreEntitySet="tbl_product_push_history">
+                <ScalarProperty Name="push_time" ColumnName="push_time" />
+                <ScalarProperty Name="push_type" ColumnName="push_type" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_wx_user">
+            <EntityTypeMapping TypeName="zhmdProductModel.tbl_wx_user">
+              <MappingFragment StoreEntitySet="tbl_wx_user">
+                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="subscribe" ColumnName="subscribe" />
+                <ScalarProperty Name="subscribe_time" ColumnName="subscribe_time" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
+                <ScalarProperty Name="public_number" ColumnName="public_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="adv_machine_product_list">
+            <EntityTypeMapping TypeName="zhmdProductModel.adv_machine_product_list">
+              <MappingFragment StoreEntitySet="adv_machine_product_list">
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="machine_name" ColumnName="machine_name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yanzhengma">
+            <EntityTypeMapping TypeName="zhmdProductModel.yanzhengma">
+              <MappingFragment StoreEntitySet="yanzhengma">
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ap">
+            <EntityTypeMapping TypeName="zhmdProductModel.tbl_ap">
+              <MappingFragment StoreEntitySet="tbl_ap">
+                <ScalarProperty Name="ap_groupname" ColumnName="ap_groupname" />
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="ap_mac" ColumnName="ap_mac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ProductData">
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_product" Width="1.5" PointX="0.75" PointY="0.75" Height="3.1397916666666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_product_type" Width="1.5" PointX="3.25" PointY="1.25" Height="1.7908333333333335" />
+        <AssociationConnector Association="zhmdProductModel.fk_product_type" >
+          <ConnectorPoint PointX="3.25" PointY="2.1454166666666667" />
+          <ConnectorPoint PointX="2.25" PointY="2.1454166666666667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="zhmdProductModel.printdata" Width="1.5" PointX="5.375" PointY="0.75" Height="1.6222135416666665" />
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_product_browse_record" Width="1.5" PointX="5.25" PointY="2.75" Height="1.9594531249999996" />
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_product_push_history" Width="1.5" PointX="3" PointY="4.125" Height="2.2966927083333335" />
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_wx_user" Width="1.5" PointX="7.25" PointY="2.25" Height="2.4653124999999996" />
+        <AssociationConnector Association="zhmdProductModel.fk_prodcut" >
+          <ConnectorPoint PointX="2.25" PointY="3.4965625" />
+          <ConnectorPoint PointX="3.09375" PointY="3.4965625" />
+          <ConnectorPoint PointX="3.09375" PointY="4.125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="zhmdProductModel.adv_machine_product_list" Width="1.5" PointX="5.375" PointY="5.125" Height="1.6222135416666674" />
+        <EntityTypeShape EntityType="zhmdProductModel.yanzhengma" Width="1.5" PointX="0.875" PointY="4.25" Height="1.6222135416666674" />
+        <EntityTypeShape EntityType="zhmdProductModel.tbl_ap" Width="1.5" PointX="7.25" PointY="4.875" Height="1.4535937499999996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

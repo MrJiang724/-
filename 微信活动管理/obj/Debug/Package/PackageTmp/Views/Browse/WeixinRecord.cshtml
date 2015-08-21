@@ -1,0 +1,63 @@
+﻿@model IEnumerable<微信活动管理.Models.tbl_wx_user>
+@{
+    ViewBag.Title = "微信数据分析";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/Browse/weixin.css")" rel="stylesheet" type="text/css">
+}
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+                <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - 微信数据分析</p>
+            }
+        </text>
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+    
+    <div id="chart1" style="height:400px; width:900px; display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+    <br /><br />
+    <div id="chart2" style="height:400px; width:900px;display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+
+    <p id="chart1_address" style="display:none">@Url.Content("~/Browse/GetTotalSubInfoJson")</p>
+    <p id="chart2_address" style="display:none">@Url.Content("~/Browse/GetWeixinActivePeopleJson")</p>
+
+    <script>
+        var address = document.getElementById("chart1_address").innerHTML;
+        getdata(address,'chart1' ,createWeixinTotalChart);
+        address = document.getElementById("chart2_address").innerHTML;
+        getdata(address, 'chart2', createWeixinWeixinActivePeopleChart);
+    </script>
+    
+    <div style="text-align:center; margin:0 auto;">
+    <h2>微信活跃用户列表</h2>
+    </div>
+    <table  class="sheet" style="width:75%; margin:0 auto;">
+        <tr>
+            <th>头像</th>
+            <th>昵称</th>
+            <th>订阅时间</th>
+            <th>最后一次活跃时间</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img width="50px" height="50px" src="@item.headimgurl"/></td>
+                <td>@item.nickname</td>
+                <td>@item.subscribe_time</td>
+                <td>@item.update_time</td>
+            </tr>
+        }
+    </table>
+    

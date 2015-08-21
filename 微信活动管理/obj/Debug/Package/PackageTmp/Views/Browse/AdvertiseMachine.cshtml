@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "广告机数据分析";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+
+@section ExtraHead{
+    <script src="@Url.Content("~/Scripts/AdvertiseMachine.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/Browse/AdvertiseMachine.css")" rel="stylesheet" type="text/css">
+}
+
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+                <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - 广告机数据分析</p>
+            }
+        </text>
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+    <br/>
+    <p id="chart1_address" style="display:none">@Url.Content("~/Browse/GetAdvInfoJson?location=")</p>
+
+    <button id="sxl"  onClick="javascript:showing(1);"class="btn btn-success">山西路</button>
+    <button  id="zym" onClick="javascript:showing(2);"class="btn btn-success">中央门</button>
+    
+    <div class="con" id="shanxilu">
+        <div>
+            <div id="chart1" style="height:420px; width:900px;display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+                <img src="@Url.Content("~/images/loading chart.jpg")" />
+            </div>
+            <script>
+                var address = document.getElementById("chart1_address").innerHTML;
+                getdata(address + 'shanxilu','chart1',createAdvMachineChart);
+            </script>
+
+
+            @for (int i = 0; i < ViewBag.Types.Count; i++)
+            {
+                微信活动管理.Models.tbl_product_type type = ViewBag.Types[i];
+                string method = "javascript:showsxtable(" + i + ");";
+                <button class="btn btn-success" onClick="@method">@type.name</button>
+            }
+        </div>
+    @for (int i = 0; i < ViewBag.Shanxilu.Count; i++)
+    {
+        微信活动管理.Models.AdvMachineRecordJsonMessage item = ViewBag.Shanxilu[i];
+        string div_id = "sx_type_" + i;
+        <div class="hid" id="@div_id">
+            <table>
+                <tr>
+                    <th>产品名称</th> 
+                    <th>当日 点击/扫描次数</th>
+                    <th>本周 点击/扫描次数</th>
+                    <th>当月 点击/扫描次数</th>
+                    <th>合计 点击/扫描次数</th>
+                </tr>
+                @foreach (微信活动管理.Models.AdvMachineRecordData data in item.data)
+                {
+                    <tr>
+                        <td>@data.productName</td>
+                        <td>@data.todayClickTime / @data.todayScanTime</td>
+                        <td>@data.weekClickTime / @data.weekScanTime</td>
+                        <td>@data.monthClickTime / @data.monthScanTime</td>
+                        <td>@data.totalClickTime / @data.totalScanTime</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    </div>   
+
+<div class="con" id="zhongyangmen">
+        <div id="chart2" style="height:420px; width:900px;display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+            <img src="@Url.Content("~/images/loading chart.jpg")" />
+        </div>
+
+            <script>
+                var address = document.getElementById("chart1_address").innerHTML;
+                getdata(address + 'zhongyangmen', 'chart2',createAdvMachineChart);
+            </script>
+            @for (int i = 0; i < ViewBag.Types.Count; i++)
+            {
+                微信活动管理.Models.tbl_product_type type = ViewBag.Types[i];
+                string method = "javascript:showzytable(" + i + ");";
+                <button class="btn btn-success" onClick="@method">@type.name</button>
+            }
+
+    @for (int i = 0; i < ViewBag.Zhongyangmen.Count; i++)
+    {
+        微信活动管理.Models.AdvMachineRecordJsonMessage item = ViewBag.Zhongyangmen[i];
+        string div_id = "zy_type_" + i;
+        <div class="hid" id="@div_id">
+            <table>
+                <tr>
+                    <th>产品名称</th> 
+                    <th>当日 点击/扫描次数</th>
+                    <th>本周 点击/扫描次数</th>
+                    <th>当月 点击/扫描次数</th>
+                    <th>合计 点击/扫描次数</th>
+                </tr>
+                @foreach (微信活动管理.Models.AdvMachineRecordData data in item.data)
+                {
+                    <tr>
+                        <td>@data.productName</td>
+                        <td>@data.todayClickTime / @data.todayScanTime</td>
+                        <td>@data.weekClickTime / @data.weekScanTime</td>
+                        <td>@data.monthClickTime / @data.monthScanTime</td>
+                        <td>@data.totalClickTime / @data.totalScanTime</td>
+                    </tr>
+                }
+            </table>
+        
+        </div>
+    }
+</div>   
+
+<script>  showing(1);</script>

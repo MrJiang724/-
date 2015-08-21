@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+.menu-first{
+	        height:31px;
+			text-decoration:none;
+			line-height:22px;
+			font-size: 16px;
+			font-weight:bold;
+			text-align:left;
+			
+		}
+
+.menu-first:hover{
+			text-decoration: none;
+		}
+		/*二级菜单*/
+		.menu-second li a{
+			color:#999;
+			height:31px;
+			line-height:31px;
+			font-size: 12px;
+			text-align:center;
+		}
+		/*二级菜单鼠标划过样式*/
+		.menu-second li a:hover {
+			color:#FFF;
+			text-decoration: none;
+			background-color:#00744b;
+			
+		}
+		/*二级菜单选中状态*/
+		.menu-second-selected {
+			
+			height:31px;
+			line-height:31px;
+			
+			text-align:center;
+		}
+		/*覆盖bootstrap的样式*/
+		.nav-list,.nav-list li a{
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		#nava{ margin-top:20%;}
+		
+
+

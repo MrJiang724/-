@@ -1,0 +1,79 @@
+﻿	
+#main{
+	padding:0px;
+	margin:0px;
+    position:relative;
+	}
+	
+.row_in{
+	margin-top:20px;
+	font-size:15px;
+
+	}
+	
+#loginbtn{
+	color:#FFF;
+	min-height:35px;
+	width:48%;
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color:#00744b;
+	
+	
+	
+	}		
+	
+	
+#rebuild{
+	color:#FFF;
+	min-height:35px;
+	width:48%;
+	margin-top:10px;
+	margin-bottom:10px;
+	background-color:#CCC;
+	
+	
+	
+	}		
+#UserName{
+	
+	margin-top:10px;
+	margin-bottom:30px;
+	
+	}		
+#Password{
+	
+	margin-top:10px;
+	margin-bottom:10px;
+	
+	}	
+	
+#login{
+	left:65%;
+	top:3%;
+	position:absolute;
+	float:right;
+	width:25%;
+	height:auto;
+	background-color:#FFF;
+	opacity:0.9;
+	
+	
+	
+	}
+	
+.intro{
+	
+	width:70%; 
+	height:auto; 
+	margin-left:15%; 
+	margin-top:2%; 
+	padding-bottom:2%; 
+	position:relative; 
+	font-weight:bold;
+	color:#999;
+	
+	}
+.carousel-indicators li{ background-color:#00744b;}	
+
+	

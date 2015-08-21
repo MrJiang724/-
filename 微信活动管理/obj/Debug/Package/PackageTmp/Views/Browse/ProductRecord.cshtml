@@ -1,0 +1,116 @@
+﻿@model 微信活动管理.Models.ProductRecordJsonMessage
+@using 微信活动管理.Models;
+@{
+    ViewBag.Title = "产品数据分析";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/Browse/product_record.css")" rel="stylesheet" type="text/css">
+    <script src="@Url.Content("~/Scripts/product_record.js")" type="text/javascript"></script>
+}
+
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+               <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - 产品数据分析</p>
+            }
+        </text>
+       
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+
+<div id="leftBlock1">
+    <ul id="list">
+    @for (int i = 0; i < ViewBag.Types.Count; i++)
+    {
+        string methodname = "javascript:reveal_" + i + "();";
+        <li onClick="@methodname">@ViewBag.Types[i]</li>
+    }
+    </ul>
+
+    @for (int i = 0; i < ViewBag.ProductList.Count; i++)
+    {
+        string div_id = "type_" + i;
+        Dictionary<int, string> dic = ViewBag.ProductList[i];
+        <div id="@div_id">
+            <ul>
+                @foreach (var item in dic.Reverse())
+                {
+                    string li_id = "li_product_" + item.Key;
+                    if(item.Value.Length>17)
+                    { 
+                        
+                        <li id="@li_id"><a href="@Url.Content("~/Browse/ProductRecord?productID=" + item.Key)" title="@item.Value">@item.Value.Substring(0, 16)...</a></li>
+                    }
+                    else
+                    {
+                         <li id="@li_id">@Html.ActionLink(item.Value, "ProductRecord", new { productID = item.Key })</li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</div>
+    @{
+        string div_type = "type_" + ViewBag.Types.IndexOf(ViewBag.ProductModel.product_type);
+        string div_product_id = "li_product_" + ViewBag.ProductModel.product_id;
+        <p id="hidden1" style="display:none;">@div_type</p>
+        <p id="hidden2" style="display:none;">@div_product_id</p>
+    }
+<script type="text/javascript">
+   var id1=$("#hidden1").html();
+   var id2 = '#' + $("#hidden2").html();
+    document.getElementById(id1).style.display = "block";
+    $(id2).attr("class", "select");
+</script>
+
+
+
+
+<div id="rightBlock1">
+    <div>
+        <p style=" background:#00744b; color:#FFF; font-size:16px;">@ViewBag.ProductModel.product_name</p>
+        @{ var img_src = "http://218.94.40.114:25609/zhmdImageFiles/" + ViewBag.ProductModel.pic_url;}
+        
+        <table style="width:96%;" class="sheet">
+            <tr>
+                <th></th>
+                <th>本周访问量</th>
+                <th>当月访问量</th>
+                <th>合计访问量</th>
+            </tr>
+            <tr>
+                <td>广告机</td>
+                <td>@Model.data.advertReport.weekCount</td>
+                <td>@Model.data.advertReport.monthCount</td>
+                <td>@Model.data.advertReport.totalCount</td>
+            </tr>
+            <tr>
+                <td>微信</td>
+                <td>@Model.data.weixinReport.weekCount</td>
+                <td>@Model.data.weixinReport.monthCount</td>
+                <td>@Model.data.weixinReport.totalCount</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+
+    <div id="chart1" style="height:400px; width:700px;display:table-cell; vertical-align:middle; text-align:center; background:#999;"  >
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+
+    <p id="chart1_address" style="display:none">@Url.Content("~/Browse/GetProductInfoJson?productID=" + ViewBag.ProductModel.product_id)</p>
+    <script>
+        var address = document.getElementById("chart1_address").innerHTML;
+        getdata(address,'chart1', createProductSummary);
+
+    </script>
+</div>
+    

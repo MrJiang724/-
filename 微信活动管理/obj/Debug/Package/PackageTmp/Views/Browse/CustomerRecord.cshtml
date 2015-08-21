@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "客流统计";
+    Layout = "~/Views/Shared/BrowseLayout.cshtml";
+}
+@section ExtraHead{
+    <link href="@Url.Content("~/Content/Browse/keliou.css")" rel="stylesheet" type="text/css">
+}
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            @section Navigation{
+                <p  class="navigation">@Html.ActionLink("数据分析", "Index", "Browse") - 客流统计</p>
+            }
+        </text>
+    }
+    else
+    {
+        <text>
+            @section Navigation{
+            }
+        </text>
+    }
+    <div id="chart1" style="height:400px; width:1000px; display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+    <p id="chart1_address" style="display:none">@Url.Content("~/Browse/GetComeStornJson")</p>
+    <script>
+        var address = document.getElementById("chart1_address").innerHTML;
+        getdata(address, 'chart1',createInStornChart);
+    </script>
+    <br />
+    <br />
+    <div id="chart2" style="height:400px; width:1000px; display:table-cell; vertical-align:middle; text-align:center; background:#999;">
+        <img src="@Url.Content("~/images/loading chart.jpg")" />
+    </div>
+
+    
+    <p id="chart2_address" style="display:none">@Url.Content("~/Browse/GetInStornJson")</p>
+
+    
+    <script>
+        var address = document.getElementById("chart2_address").innerHTML;
+        getdata(address,'chart2' ,createInStornChart);
+    </script>

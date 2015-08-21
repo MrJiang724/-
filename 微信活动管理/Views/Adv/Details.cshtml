@@ -1,0 +1,39 @@
+﻿@model 微信活动管理.Models.ProductModel
+
+@{
+    ViewBag.Title = "邮政金融超市 - 活动详情";
+}
+
+@if(!Request.IsAuthenticated)
+{
+    <p>使用本功能前请先登录！！<br/>请点击
+    @Html.ActionLink("返回主页", "Index", "Home")
+    进行用户登录
+    </p>
+}
+else
+{
+<p  class="navigation">@Html.ActionLink("广告机滚屏管理", "Index", "Adv") - 广告机滚屏活动详情</p>
+    
+<h2>活动详情</h2>
+
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.product_name)</legend>
+    <p>创建时间：@Html.DisplayFor(model => model.create_time)&nbsp;&nbsp;
+       活动类型：@Html.DisplayFor(model => model.product_type)&nbsp;&nbsp;
+       推送等级：@Html.DisplayFor(model => model.push_level)</p>
+    @{
+    string img_src = "http://218.94.40.114:25609/zhmdImageFiles/" + Html.DisplayFor(model => model.pic_url);
+        <img src="@img_src" style="max-width:700px;" class="product_img"/>
+    }     
+    <br/>广告机用二维码：
+    <img src="@Html.DisplayFor(model => model.ticket_url)" style="max-width:150px;" class="product_img" />
+    <p>@Html.DisplayFor(model => model.description)</p>
+    <p><a href="@Html.DisplayFor(model => model.content_url)">原文网址</a>
+    &nbsp;&nbsp;<a href="@Html.DisplayFor(model => model.short_url)">短链接网址</a></p> 
+</fieldset>
+<p>
+    @Html.ActionLink("返回", "Index")
+</p>
+
+}
